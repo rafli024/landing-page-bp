@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: landing-page
+  labels:
+    app: landing-page
+spec:
+  selector:
+    matchLabels:
+      app: landing-page
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: landing-page
+    spec:
+      containers:
+        - name: landing-page
+          image: muhammadrafli24/landing-page:1.0.2
+          ports:
+            - containerPort: 80
