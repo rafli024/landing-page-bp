@@ -1,5 +1,3 @@
-def imageTag = "${BUILD_NUMBER}"
-
 pipeline {
     agent { label 'kube-masternode' }
     stages {
@@ -35,10 +33,10 @@ pipeline {
         
         stage('Docker Push'){
             steps{
-                script{
-                    docker.withRegistry('https://hub.docker.com','docker-id'){
-                    def app = docker.build("muhammadrafli24/landing-page:${imageTag}", '-f dockerfile .').push()
-                    }
+                sh '''
+                sudo docker login -u muhammadrafli24 -p ${docker-passwd}
+                sudo docker push muhammadrafli24/landing-page:${BUILD_NUMBER}
+                '''
                 }
             }
         }
