@@ -37,7 +37,6 @@ pipeline {
                 sudo docker login -u muhammadrafli24 -p ${docker-passwd}
                 sudo docker push muhammadrafli24/landing-page:${BUILD_NUMBER}
                 '''
-                }
             }
         }
         
