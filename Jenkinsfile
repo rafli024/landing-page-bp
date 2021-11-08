@@ -1,3 +1,5 @@
+def imageTag = "${BUILD_NUMBER}"
+
 pipeline {
     agent { label 'kube-masternode' }
     stages {
@@ -26,17 +28,17 @@ pipeline {
             steps {
                 sh '''
                 cd $WORKSPACE/landing-page-bp/landing-page && 
-                docker build --no-cache --network=host -t muhammadrafli24/landing-page:${BUILD_NUMBER} -f dockerfile .
+                sudo docker build --no-cache --network=host -t muhammadrafli24/landing-page:${BUILD_NUMBER} -f dockerfile .
                 '''
             }
         }
         
         stage('Docker Push'){
             steps{
-                sh '''
-                   sudo docker login -u ${docker_username} -p ${docker_password} 
-                   sudo docker push muhammadrafli24/landing-page:${BUILD_NUMBER}
-                '''
+                script{
+                    docker.withRegistry('httpsL//hub.docker.com','docker-id')
+                    def = app = docker.build("muhammadrafli24/landing-page:${imageTag}", '-f dockerfile .').push()
+                }
             }
         }
         
