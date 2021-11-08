@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
         - name: landing-page
-          image: muhammadrafli24/landing-page:1.0.2
+          image: muhammadrafli24/landing-page:latest
           ports:
             - containerPort: 80
