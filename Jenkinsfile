@@ -33,9 +33,10 @@ pipeline {
         
         stage('Docker Push'){
             steps{
-                withCredentials([string(credentialsId: 'docker-passwd', variable: 'test')]) {
+                withCredentials([string(credentialsId: 'user-docker', variable: 'username'), string(credentialsId: 'docker-passwd', variable: 'password')]) {
                 // some block
-                sh "sudo docker login -u muhammadrafli24 -p ${test}"
+                sh "sudo docker login -u ${username} -p ${password}"
+                }
                 }
                 sh '''
                 sudo docker push muhammadrafli24/landing-page:${BUILD_NUMBER}
