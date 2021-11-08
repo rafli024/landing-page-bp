@@ -37,7 +37,7 @@ pipeline {
             steps{
                 script{
                     docker.withRegistry('https://hub.docker.com','docker-id')
-                    def = app = docker.build("muhammadrafli24/landing-page:${imageTag}", '-f dockerfile .').push()
+                    def app = docker.build("muhammadrafli24/landing-page:${imageTag}", '-f dockerfile .').push()
                 }
             }
         }
