@@ -9,7 +9,7 @@ metadata:
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-    - host: dev.rafli24.my.id
+    - host: rafli24.my.id
       http:
         paths:
           - path: /(.*)
