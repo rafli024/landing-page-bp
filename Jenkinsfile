@@ -33,11 +33,15 @@ pipeline {
         
         stage('Docker Push'){
             steps{
+                withCredentials([string(credentialsId: 'docker-passwd', variable: 'test')]) {
+                // some block
+                sh "sudo docker login -u muhammadrafli24 -p ${test}"
+                }
                 sh '''
-                sudo docker login -u muhammadrafli24 -p ${docker-passwd}
                 sudo docker push muhammadrafli24/landing-page:${BUILD_NUMBER}
                 '''
             }
+            
         }
         
         stage('Deploy to K8S'){
