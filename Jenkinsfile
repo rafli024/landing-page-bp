@@ -8,7 +8,7 @@ pipeline {
                 then
                     cd landing-page-bp && git pull
                 else 
-                    git clone ${repoURL}
+                    git clone https://github.com/rafli024/landing-page-bp.git
                 fi
                 '''
             }
