@@ -19,3 +19,17 @@ spec:
           image: muhammadrafli24/landing-page:latest
           ports:
             - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: rafli-landing
+spec:
+  selector:
+    app: landing-page
+  type: ClusterIP
+  ports:
+    - name: rafli-landing
+      protocol: TCP
+      port: 80
+      targetPort: 8080
