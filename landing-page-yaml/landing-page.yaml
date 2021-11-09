@@ -18,4 +18,4 @@ spec:
         - name: landing-page
           image: muhammadrafli24/landing-page:latest
           ports:
-            - containerPort: 80
+            - containerPort: 8080
