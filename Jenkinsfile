@@ -42,8 +42,6 @@ pipeline {
                 sudo docker push muhammadrafli24/landing-page:${BUILD_NUMBER}
                 '''
             }
-            
-        }
         
         stage('Deploy to K8S'){
             steps{
