@@ -36,7 +36,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'user-docker', variable: 'username'), string(credentialsId: 'docker-passwd', variable: 'password')]) {
                 // some block
                 sh "sudo docker login -u ${username} -p ${password}"
-                }
+                    }
                 }
                 sh '''
                 sudo docker push muhammadrafli24/landing-page:${BUILD_NUMBER}
@@ -62,4 +62,5 @@ pipeline {
                 '''
             }
         }
+    }
 }
