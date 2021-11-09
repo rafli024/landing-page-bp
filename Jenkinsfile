@@ -37,10 +37,10 @@ pipeline {
                 // some block
                 sh "sudo docker login -u ${username} -p ${password}"
                     }
-                }
                 sh '''
                 sudo docker push muhammadrafli24/landing-page:${BUILD_NUMBER}
                 '''
+                }
             }
         
         stage('Deploy to K8S'){
